@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"	
+    xmlns:p="http://primefaces.org/ui">
+      
+	<h:form id="formDisplayAutor" prependId="false">
+		<h:panelGrid id="ifAutor" columns="3" style="margin-bottom:10px">
+			<h:outputLabel for="nome" value="#{labels['label.listar.livros.autor']}:" />
+			<h:inputText id="nome" value="#{autorController.autor.nome}"
+			title="Campo Obrigatório!">
+			<p:tooltip id="toolTipNomeAutor" for="nome" showEvent="focus" hideEvent="blur" />						
+			</h:inputText>
+			<span class="required" style="color: #FF0000">*</span>
+			<p:commandButton update=":formPrincipal:tabela, :formAddLivro:panelAddLivro"
+				oncomplete=":formDisplayAutor.hide();"
+				actionListener="#{autorController.adicionarAutor}"
+				value="#{labels['label.botao.inserir']}"
+				process="@this">
+			</p:commandButton>
+		</h:panelGrid>
+		
+		<h:panelGrid id="panelAutoCompleteAutor" columns="3">
+			<p:autoComplete id="autorCompleteAutor" maxResults="10"
+				update=":formDisplayAutor"
+				label="autorController.autor.nome"
+				value="#{autorController.autor.idAutor}"
+				completeMethod="#{autorController.nameSuggestions}" var="autores"
+				itemLabel="#{autores}" itemValue="#{autores}"
+				converter="autorConverter"
+				title="#{labels['label.title.campo.obrigatorio.preencher.autocomplete']}">
+			<span class="required" style="color: #FF0000">*</span>
+			<p:tooltip id="toolTipAutoAutor" for="autorCompleteAutor" showEvent="focus" hideEvent="blur" />				
+			</p:autoComplete>
+			<p:commandButton ajax="true" value="Excluir Autor" id="excluirAutor"
+				oncomplete="confirmacaoAutorExcluir.show()" />
+		</h:panelGrid>
+	</h:form>
+
+</ui:composition>

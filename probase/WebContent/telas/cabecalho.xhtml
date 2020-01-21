@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form prependId="false">
+		<p:commandLink value="#{labels['label.principal.gerencia']}"
+			actionListener="#{livroController.prepararAdicionarLivro}"
+			update=":formDisplay:ifLivros"
+			oncomplete="dialogDisplayAlterar.show()" />
+		<p:commandLink value="#{labels['label.principal.gerencia']}"
+			actionListener="#{autorController.prepararAdicionarAutor}"
+			update=":formDisplayAutor:ifAutor"
+			oncomplete="dialogDisplayAlterarAutor.show()" />
+	</h:form>
+
+</ui:composition>

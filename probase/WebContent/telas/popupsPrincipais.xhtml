@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Gerencia " widgetVar="dialogDisplayAlterar"
+		resizable="false" modal="true" showEffect="slide" width="500">
+		<ui:include src="/telas/gerenciar.xhtml" />
+	</p:dialog>
+
+	<p:dialog header="Gerencia " widgetVar="dialogDisplayAlterarAutor"
+		resizable="false" modal="true" showEffect="slide" width="500">
+		<ui:include src="/telas/gerenciarAutor.xhtml" />
+	</p:dialog>
+	
+	<p:messages id="popup" autoUpdate="true" showDetail="true"
+		globalOnly="true" styleClass="message" errorClass="errormsg"
+		infoClass="infomsg" warnClass="warnmsg">
+	</p:messages>
+
+	<h:form id="formDCI">
+		<p:confirmDialog id="confirmacaoImpressao"
+			message="Confirmar Impressao?" header="Confirmação"
+			widgetVar="confirmationImprimir" icon="pi pi-exclamation-triangle">
+			<p:commandButton id="btnBaixar" value="Baixar" ajax="false"
+				onclick="confirmationImprimir.hide()"
+				action="#{livroController.baixarRelatorio}" update=":formDCI:btnBaixar" />
+			<p:commandButton id="btnCarregar" value="Carregar"  ajax="false"
+				onclick="confirmationImprimir.hide()"
+				action="#{livroController.carregarRelatorio}" update=":formDCI:btnCarregar" />
+		</p:confirmDialog>
+	</h:form>
+
+	<h:form id="formAutorExcluir">
+		<p:confirmDialog id="confirmacaoAutorExcluir"
+			message="Confirmar Exclusão?" header="Confirmação"
+			widgetVar="confirmacaoAutorExcluir" icon="pi pi-exclamation-triangle">
+			<p:commandButton id="btnSim" value="Sim" ajax="false"
+				onclick="confirmacaoAutorExcluir.hide()"
+				action="#{autorController.excluirAutor}" update=":formAutorExcluir:btnSim" />
+			<p:commandButton id="btnNao" value="Não"
+				onclick="confirmacaoAutorExcluir.hide()" type="button" />
+		</p:confirmDialog>
+	</h:form>
+
+
+</ui:composition>

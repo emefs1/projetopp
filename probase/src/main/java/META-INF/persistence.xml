@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Persistence deployment descriptor for prod profile -->
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
+        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
+	<!-- unidade de persistencia -->
+	<persistence-unit name="ProbasePersistenceUnit" transaction-type="RESOURCE_LOCAL">
+		<description>Persistence</description>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<mapping-file>META-INF/consultar/autoresVO.hbm.xml</mapping-file>
+
+		<class>br.com.projeto.entidades.Livro</class>
+		<class>br.com.projeto.entidades.Autor</class>
+		
+	<properties>
+		<!-- DADOS CONEXAO -->
+		<property name="jboss.as.jpa.providerModule" value="system.layers.base.com.mysql" />
+		
+		<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
+		<property name="hibernate.connection.username" value="root" />
+		<property name="hibernate.connection.password" value="admin123" />
+		<property name="hibernate.connection.url"
+			value="jdbc:mysql://localhost:3306/livraria?serverTimezone=UTC" />
+		<!-- <property name="hibernate.default_schema" value="livraria" />  -->
+
+		<!-- CONFIGURACAO -->
+		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+		<property name="hibernate.archive.autodetection" value="true" />
+		<property name="hibernate.hbm2ddl.auto" value="update" />
+		<property name="hibernate.show_sql" value="true" />
+		<property name="hibernate.format_sql" value="true" />
+
+		<!-- POOL -->
+		<property name="hibernate.c3p0.min_size" value="5" />
+		<property name="hibernate.c3p0.max_size" value="20" />
+		<property name="hibernate.c3p0.timeout" value="300" />
+		<property name="hibernate.c3p0.max_statements" value="50" />
+		<property name="hibernate.c3p0.idle_test_period" value="3000" />
+		<property name="javax.persistence.schema-generation.drop-source" value="metadata-then-script"/>
+	</properties>
+
+	</persistence-unit>
+
+
+</persistence>
