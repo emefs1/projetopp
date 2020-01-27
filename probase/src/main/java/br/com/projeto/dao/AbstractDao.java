@@ -8,6 +8,7 @@ import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.hibernate.Session;
 
 /**
  * Dao abstrato que implementa os metodos genericos para acesso ao banco de
@@ -92,6 +93,26 @@ public abstract class AbstractDao<E> {
 	 */
 	public void clear() {
 		entityManager.clear();
+	}
+
+	/**
+	 * Desconecta uma entidade da sessão do Hibernate.
+	 *
+	 * @param entidade
+	 */
+	public void evict(E entidade) {
+		Session session = (Session) entityManager.getDelegate();
+		session.evict(entidade);
+	}
+
+	/**
+	 * Atualiza a entidade com os valores atuais do banco de dados.
+	 *
+	 * @param entidade
+	 */
+	public void refresh(E entidade) {
+		if (entidade != null)
+			entityManager.refresh(entidade);
 	}
 
 	/**
