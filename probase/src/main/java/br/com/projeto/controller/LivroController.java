@@ -15,8 +15,8 @@ import br.com.projeto.entidades.Autor;
 import br.com.projeto.entidades.Livro;
 import br.com.projeto.entidades.filtros.FiltroLivro;
 import br.com.projeto.entidades.filtros.FiltroLivroConsulta;
-import br.com.projeto.service.AutorService;
-import br.com.projeto.service.LivroService;
+import br.com.projeto.service.impl.AutorServiceImpl;
+import br.com.projeto.service.impl.LivroServiceImpl;
 import br.com.projeto.util.MensagemUtil;
 
 @ManagedBean(name = "livroController")
@@ -29,9 +29,9 @@ public class LivroController implements Serializable {
 	private static final long serialVersionUID = -4283232024973687788L;
 
 	@Inject
-	private LivroService livroService;
+	private LivroServiceImpl livroService;
 	@Inject
-	private AutorService livroAutorService;
+	private AutorServiceImpl livroAutorService;
 
 	private Livro livro;
 	private List<Autor> autores = new ArrayList<>();
@@ -125,7 +125,7 @@ public class LivroController implements Serializable {
 	 */
 	public List<Autor> getAutores() {
 		try {
-			autores = getLivroAutorService().getAutorDaoImp().findList();
+			autores = getLivroAutorService().getAutorDaoImpl().findList();
 		} catch (Exception e) {
 			MensagemUtil.addErrorMessage(e, "mensagem.erro.processar.lista", "messages");
 		}
@@ -180,11 +180,11 @@ public class LivroController implements Serializable {
 		this.alterarLivro = alterarLivro;
 	}
 
-	public LivroService getLivroService() {
+	public LivroServiceImpl getLivroService() {
 		return livroService;
 	}
 
-	public AutorService getLivroAutorService() {
+	public AutorServiceImpl getLivroAutorService() {
 		return livroAutorService;
 	}
 

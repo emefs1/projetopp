@@ -10,8 +10,20 @@ import java.util.List;
  */
 public interface DaoInterface<E> extends Serializable {
 
+	/**
+	 * Salvar um objeto novo (create).
+	 * 
+	 * @param objeto
+	 * @throws Exception
+	 */
 	public void save(E objeto) throws Exception;
 
+	/**
+	 * Salvar um objeto novo a partir de um objeto existente.
+	 * 
+	 * @param objeto
+	 * @throws Exception
+	 */
 	public void persist(E objeto) throws Exception;
 
 	public E findById(Class<E> objeto, long id) throws Exception;
@@ -20,6 +32,12 @@ public interface DaoInterface<E> extends Serializable {
 
 	public void remove(E objeto) throws Exception;
 
+	/**
+	 * Atualizar objeto (MERGE).
+	 * 
+	 * @param objeto
+	 * @throws Exception
+	 */
 	public void update(E objeto) throws Exception;
 
 }

@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 import br.com.projeto.entidades.Autor;
 import br.com.projeto.entidades.filtros.FiltroAutor;
-import br.com.projeto.service.AutorService;
+import br.com.projeto.service.impl.AutorServiceImpl;
 import br.com.projeto.util.MensagemUtil;
 
 @ManagedBean(name = "autorController")
@@ -23,7 +23,7 @@ public class AutorController implements Serializable {
 	private static final long serialVersionUID = -9002598643828188483L;
 
 	@Inject
-	private AutorService autorService;
+	private AutorServiceImpl autorService;
 
 	private Autor autor;
 	private String inputName;
@@ -105,7 +105,7 @@ public class AutorController implements Serializable {
 		this.filtro = filtro;
 	}
 
-	public AutorService getAutorService() {
+	public AutorServiceImpl getAutorService() {
 		return autorService;
 	}
 

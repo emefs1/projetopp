@@ -10,10 +10,10 @@ import br.com.projeto.dao.AbstractDao;
 import br.com.projeto.dao.DaoInterface;
 import br.com.projeto.entidades.Livro;
 
-@Named(value = "livroDaoImp")
+@Named(value = "livroDaoImpl")
 @ApplicationScoped
-@Path("/LivroDaoImp")
-public class LivroDaoImp extends AbstractDao<Livro> implements DaoInterface<Livro> {
+@Path("/LivroDaoImpl")
+public class LivroDaoImpl extends AbstractDao<Livro> implements DaoInterface<Livro> {
 
 	/**
 	 * 
@@ -23,7 +23,7 @@ public class LivroDaoImp extends AbstractDao<Livro> implements DaoInterface<Livr
 	/**
 	 * 
 	 */
-	public LivroDaoImp() {
+	public LivroDaoImpl() {
 
 	}
 	

@@ -12,17 +12,17 @@ import br.com.projeto.dao.AbstractDao;
 import br.com.projeto.dao.DaoInterface;
 import br.com.projeto.entidades.Autor;
 
-@Named(value = "autorDaoImp")
+@Named(value = "autorDaoImpl")
 @ApplicationScoped
-@Path("/AutorDaoImp")
-public class AutorDaoImp extends AbstractDao<Autor> implements DaoInterface<Autor> {
+@Path("/AutorDaoImpl")
+public class AutorDaoImpl extends AbstractDao<Autor> implements DaoInterface<Autor> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -755105070984435341L;
 
-	public AutorDaoImp() {
+	public AutorDaoImpl() {
 
 	}
 
